@@ -1,0 +1,7 @@
+<Solution>
+  <Configurations>
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Project Path="sokobanEditor/sokobanEditor.vcxproj" Id="3f901147-a850-4005-ba94-1269085e4769" />
+</Solution>
