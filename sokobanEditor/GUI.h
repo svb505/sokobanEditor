@@ -7,6 +7,7 @@
 #include <vector>
 #include "saveToJson.h"
 #include "vec2.h"
+#include <format>
 
 void setupGui(GLFWwindow* window){
     IMGUI_CHECKVERSION();
@@ -23,7 +24,7 @@ void destroyGui() {
     ImGui_ImplGlfw_Shutdown();
     ImGui::DestroyContext();
 }
-void renderGui(std::string mode,std::vector<Wall>& walls, std::vector<Vec2>& boxes, 
+void renderGui(std::string mode,int& current,std::vector<Wall>& walls, std::vector<Vec2>& boxes, 
     std::vector<Vec2>& circles) {
     ImGui::Begin("Level editor");
     ImGui::Text("Current mode: %s", mode);
@@ -31,7 +32,10 @@ void renderGui(std::string mode,std::vector<Wall>& walls, std::vector<Vec2>& box
     ImGui::Text("Key C - Circles mode");
     ImGui::Text("Key L - Lines mode");
 
-    if (ImGui::Button("Save")) saveAll("maze.json",walls,boxes,circles);
+    if (ImGui::Button("Save")) {
+        saveAll(std::format("lvl{}.json",current), current, walls, boxes, circles);
+        current++;
+    }
 
     ImGui::Text("Walls count: %d", (int)walls.size());
 

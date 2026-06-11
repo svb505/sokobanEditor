@@ -1,7 +1,5 @@
-#include "saveToJson.h"
-#include <nlohmann//json.hpp>
-
 #pragma once
+#include "saveToJson.h"
 #include <string>
 #include <nlohmann/json.hpp>
 #include "structures.h"
@@ -10,7 +8,7 @@
 
 using json = nlohmann::json;
 
-void saveAll(const std::string& path, std::vector<Wall>& walls, std::vector<Vec2>& boxes,
+void saveAll(const std::string& path, int current, std::vector<Wall>& walls, std::vector<Vec2>& boxes,
     std::vector<Vec2>& circles)
 {
     json root;
@@ -23,8 +21,8 @@ void saveAll(const std::string& path, std::vector<Wall>& walls, std::vector<Vec2
             {"y2", wall.end.y}
             });
     }
-    for (auto& box : boxes) root["boxes"].push_back({ box.x,box.y });
-    for (auto& circle : circles) root["circles"].push_back({ circle.x,circle.y });
+    for (auto& box : boxes) root["boxes"].push_back({ {"x",box.x},{"y",box.y}});
+    for (auto& circle : circles) root["circles"].push_back({ {"x",circle.x},{"y",circle.y} });
 
     std::ofstream file(path);
 

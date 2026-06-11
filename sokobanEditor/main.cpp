@@ -10,6 +10,8 @@
 #include "drawlings.h"
 #include "GUI.h"
 
+int current = 1;
+
 std::vector<Wall> walls;
 std::vector<Vec2> boxes;
 std::vector<Vec2> circles;
@@ -26,9 +28,8 @@ constexpr float maxY = 200;
 
 std::string mode = "Lines";
 
-GridPoint snapToCenters(float worldX, float worldY)
-{
-    int array[20] = { -180,-160,-140,-120,-100,-80,-60,-40,-20,0,20,40,60,80,100,120,140,
+GridPoint snapToCenters(float worldX, float worldY){
+    int array[20] = { -180,-160,-140,-120,-100,-80,-60,-40,-20,20,40,60,80,100,120,140,
         160,180 };
 
     int closestX = 0;
@@ -206,7 +207,7 @@ int main(){
         ImGui_ImplGlfw_NewFrame();
         ImGui::NewFrame();
 
-        renderGui(mode,walls,boxes,circles);
+        renderGui(mode,current,walls,boxes,circles);
 
         ImGui::Render();
 
