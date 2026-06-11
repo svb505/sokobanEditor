@@ -31,6 +31,7 @@ void renderGui(std::string mode,int& current,std::vector<Wall>& walls, std::vect
     ImGui::Text("Key B - Boxes mode");
     ImGui::Text("Key C - Circles mode");
     ImGui::Text("Key L - Lines mode");
+    ImGui::Text("Key R - Clear all");
 
     if (ImGui::Button("Save")) {
         saveAll(std::format("lvl{}.json",current), current, walls, boxes, circles);

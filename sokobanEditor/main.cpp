@@ -71,6 +71,11 @@ void processInput(GLFWwindow* window)
     if (glfwGetKey(window, GLFW_KEY_L) == GLFW_PRESS) mode = "Lines";
     if (glfwGetKey(window, GLFW_KEY_C) == GLFW_PRESS) mode = "Circles";
     if (glfwGetKey(window, GLFW_KEY_B) == GLFW_PRESS) mode = "Boxes";
+    if (glfwGetKey(window, GLFW_KEY_R) == GLFW_PRESS) {
+        walls.clear();
+        boxes.clear();
+        circles.clear();
+    }
 }
 GridPoint mouseToGrid(GLFWwindow* window,double mouseX, double mouseY){
     int width;
